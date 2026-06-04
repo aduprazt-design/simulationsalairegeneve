@@ -9,20 +9,17 @@
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:13px;background:#f5f4f0;color:#1a1a18;padding:20px}
 h1{font-size:15px;font-weight:500;margin-bottom:16px;color:#1a1a18}
 .grid{display:grid;grid-template-columns:260px 1fr;gap:16px}
-.col-left{display:flex;flex-direction:column;gap:10px}
-.col-right{display:flex;flex-direction:column;gap:12px}
+.col-left,.col-right{display:flex;flex-direction:column;gap:10px}
+.col-right{gap:12px}
 .card{background:#fff;border:0.5px solid rgba(0,0,0,.12);border-radius:10px;padding:13px 15px}
 .lb{font-size:11px;color:#666;margin-bottom:7px;font-weight:500;text-transform:uppercase;letter-spacing:.03em}
-/* Segment buttons */
 .seg{display:grid;gap:4px}
 .seg-4{grid-template-columns:repeat(4,1fr)}
 .seg-2{grid-template-columns:1fr 1fr}
-.seg button{padding:5px 3px;font-size:11px;border:0.5px solid #ccc;background:transparent;color:#666;border-radius:6px;cursor:pointer;text-align:center;transition:.1s}
+.seg button{padding:5px 3px;font-size:11px;border:0.5px solid #ccc;background:transparent;color:#666;border-radius:6px;cursor:pointer;text-align:center}
 .seg button.on{background:#f0efe8;color:#1a1a18;border-color:#999;font-weight:500}
-/* Counters */
 .counter{display:flex;align-items:center;gap:8px}
 .pm{width:24px;height:24px;border-radius:50%;border:0.5px solid #ccc;background:transparent;cursor:pointer;font-size:15px;display:inline-flex;align-items:center;justify-content:center;color:#1a1a18}
-/* Toggle switch */
 .tg{display:flex;align-items:center;justify-content:space-between;gap:8px}
 .sw{position:relative;display:inline-block;width:36px;height:20px;flex-shrink:0}
 .sw input{opacity:0;width:0;height:0}
@@ -30,58 +27,47 @@ h1{font-size:15px;font-weight:500;margin-bottom:16px;color:#1a1a18}
 .sl::before{content:'';position:absolute;width:16px;height:16px;left:2px;top:2px;background:#fff;border-radius:50%;transition:.15s}
 .sw input:checked+.sl{background:#1D9E75}
 .sw input:checked+.sl::before{transform:translateX(16px)}
-/* Inputs */
 input[type=range]{width:100%;accent-color:#534AB7}
 input[type=number]{width:100%;padding:7px 9px;border:0.5px solid #ccc;border-radius:6px;font-size:13px;color:#1a1a18;outline:none}
 input[type=number]:focus{border-color:#888}
-/* Metric cards */
 .metrics{display:grid;gap:8px}
 .mc{background:#f5f4f0;border-radius:8px;padding:11px 13px}
 .mc .val{font-size:22px;font-weight:500;color:#1D9E75;letter-spacing:-.5px;margin:4px 0 2px}
 .mc .val.dark{color:#1a1a18;font-size:18px}
 .mc .sub{font-size:10px;color:#888}
-/* Rows */
 .row{display:flex;justify-content:space-between;align-items:center;padding:5px 0;border-bottom:0.5px solid #eee;gap:8px}
 .row:last-child{border-bottom:none}
 .row .nm{font-size:12px;color:#666}
-.row .vl{font-size:12px;font-weight:400;font-variant-numeric:tabular-nums;color:#1a1a18}
+.row .vl{font-size:12px;font-variant-numeric:tabular-nums;color:#1a1a18}
 .row.sub{border-top:0.5px solid #bbb;padding-top:6px;margin-top:3px}
 .row.sub .nm,.row.sub .vl{font-weight:500;color:#1a1a18}
 .row.big .vl{font-size:14px}
 .neg{color:#E24B4A!important}
 .pos{color:#1D9E75!important}
-/* Bar */
 #bar{height:16px;border-radius:8px;overflow:hidden;display:flex}
-/* Annual table */
 .at{width:100%;border-collapse:collapse}
 .at td,.at th{padding:5px 0;vertical-align:middle;font-size:12px}
-.at th{font-size:11px;color:#888;font-weight:500;text-align:right;padding-bottom:6px}
+.at th{font-size:11px;color:#888;font-weight:500;text-align:right;padding-bottom:6px;border-bottom:0.5px solid #eee}
 .at th:first-child{text-align:left}
-.at td:first-child{color:#666;font-size:12px}
+.at td:first-child{color:#666}
 .at td:not(:first-child){text-align:right;font-variant-numeric:tabular-nums}
 .at tr{border-bottom:0.5px solid #eee}
 .at tr:last-child{border-bottom:none}
-.at tr.sub td{border-top:0.5px solid #bbb;font-weight:500;color:#1a1a18;padding-top:7px;margin-top:3px}
+.at tr.sub td{border-top:0.5px solid #bbb;font-weight:500;color:#1a1a18;padding-top:7px}
 .at tr.sub td:not(:first-child){color:#1D9E75;font-size:13px}
-/* Tags */
-.tag{display:inline-block;font-size:10px;padding:2px 6px;border-radius:4px;background:#f0efe8;color:#666;border:0.5px solid #ddd;margin-top:4px}
-/* Note */
 .note{font-size:10px;color:#999;line-height:1.5;margin-top:8px}
 </style>
 </head>
 <body>
-<h1>Simulateur salaire net — Genève 2026 <span style="font-weight:400;color:#999">Alpineo Consulting SA</span></h1>
-
+<h1>Simulateur salaire net : Genève 2026 <span style="font-weight:400;color:#999">Alpineo Consulting SA</span></h1>
 <div class="grid">
-<!-- LEFT -->
-<div class="col-left">
 
+<div class="col-left">
 <div class="card">
   <div class="lb">Permis</div>
   <div class="seg seg-4" id="pSeg"></div>
   <div id="pN" style="font-size:11px;color:#999;margin-top:5px;line-height:1.4"></div>
 </div>
-
 <div class="card">
   <div class="lb">Situation familiale</div>
   <div class="seg seg-2" id="sSeg"></div>
@@ -107,7 +93,6 @@ input[type=number]:focus{border-color:#888}
     </div>
   </div>
 </div>
-
 <div class="card">
   <div class="tg" style="margin-bottom:6px">
     <span class="lb" style="margin:0">Salaire brut mensuel</span>
@@ -116,52 +101,42 @@ input[type=number]:focus{border-color:#888}
   <input type="range" min="1000" max="25000" step="100" value="8000" id="sR" oninput="S.sal=+this.value;rS(1)">
   <input type="number" id="sI" value="8000" min="1000" step="100" oninput="S.sal=Math.max(1000,+this.value||1000);rS(0)" style="margin-top:8px">
   <div class="tg" style="margin-top:11px">
-    <span style="font-size:12px;color:#555">13<sup>e</sup> mois (étalement ×13/12)</span>
+    <span style="font-size:12px;color:#555">13<sup>e</sup> mois : étalement mensuel (×13/12)</span>
     <label class="sw"><input type="checkbox" id="t13" onchange="S.t13=this.checked;calc()"><span class="sl"></span></label>
   </div>
 </div>
-
 <div class="card">
   <div class="lb">Prime / variable annuelle brute (CHF)</div>
   <input type="number" id="vI" value="0" min="0" step="500" oninput="S.vari=Math.max(0,+this.value||0);calc()">
 </div>
-
 <div style="font-size:10px;color:#aaa;line-height:1.7;padding:0 2px">
   <strong style="color:#888">Calibré fiches Alpineo mai 2026</strong><br>
-  AANP B1 0.73% · IJM A1 0.465% · Maternité GE 0.029%<br>
-  LPP caisse flat 4.15% (franchise CHF 26'460/an)<br>
-  IS barème GE-A0N 2026 — points confirmés : 5'000→7.62%, ~6'000→10.71%, 15'000→20.12%
+  AANP B1 : 0.73% · IJM A1 : 0.465% · Maternité GE : 0.029%<br>
+  LPP caisse flat : 4.15% (franchise CHF 26'460/an)<br>
+  IS barème GE-A0N 2026 (points réels confirmés)
+</div>
 </div>
 
-</div>
-
-<!-- RIGHT -->
 <div class="col-right">
-
 <div class="metrics" id="topMet"></div>
-
 <div class="card">
-  <div class="lb" style="margin-bottom:8px">Répartition du brut effectif</div>
+  <div class="lb" style="margin-bottom:8px">Répartition du brut mensuel (hors 13e)</div>
   <div id="bar"></div>
   <div id="leg" style="display:flex;flex-wrap:wrap;gap:10px;margin-top:8px"></div>
 </div>
-
 <div class="card">
   <div class="lb">Détail mensuel</div>
   <div id="mRows"></div>
   <div id="mNote" class="note"></div>
 </div>
-
 <div class="card">
   <div class="lb">Synthèse annuelle</div>
   <div id="aRows"></div>
 </div>
-
 <div class="card" id="vC" style="display:none">
-  <div class="lb">Prime annuelle — décomposition</div>
+  <div class="lb">Prime annuelle : décomposition</div>
   <div id="vRows"></div>
 </div>
-
 </div>
 </div>
 
@@ -170,7 +145,12 @@ const F=v=>'CHF\u202f'+Math.round(Math.abs(v)).toLocaleString('fr-CH');
 const PP=v=>(Math.round(v*1000)/10).toFixed(1)+'%';
 const PERMS=[{i:'B',l:'Permis B'},{i:'C',l:'Permis C'},{i:'G',l:'Frontalier'},{i:'L',l:'Permis L'}];
 const SITS=[{i:'A',l:'Célibataire'},{i:'B',l:'Marié 1 rev.'},{i:'C',l:'Marié 2 rev.'},{i:'H',l:'Monoparental'}];
-const PN={B:'Résidence — IS retenue à la source mensuelle.',C:'Taxation ordinaire — pas d\'IS mensuelle (déclaration annuelle).',G:'Frontalier·e — IS retenue à Genève depuis janv. 2023 (convention FR-CH).',L:'Court séjour — IS retenue à la source mensuelle.'};
+const PN={
+  B:'Résidence : IS retenue à la source mensuelle.',
+  C:'Taxation ordinaire : pas d\'IS mensuelle (déclaration annuelle).',
+  G:'Frontalier·e : IS retenue à Genève depuis janv. 2023 (convention FR-CH).',
+  L:'Court séjour : IS retenue à la source mensuelle.'
+};
 const BR=[[1000,0],[1500,.5],[2000,1.5],[2500,3],[3000,4.5],[3500,5.8],[4000,6.7],[4500,7.2],[5000,7.62],[5500,9],[5833,10.71],[6042,10.71],[6500,12],[7000,13.5],[8000,15],[9000,16.5],[10000,17.5],[12000,19],[15000,20.12],[20000,22],[25000,23.5],[30000,24.5]];
 let S={permit:'G',sit:'A',enf:0,enform:0,sal:8000,t13:false,vari:0};
 
@@ -187,7 +167,7 @@ function uE(){
   document.getElementById('eF0').textContent=S.enform;
   document.getElementById('eF').style.display=S.enf>0?'block':'none';
   const af=S.enf>0?(S.enf-S.enform)*311+S.enform*386:0;
-  document.getElementById('afLn').textContent=S.enf>0?'→ AF calculées : '+F(af)+'/mois':'';
+  document.getElementById('afLn').textContent=af>0?'AF calculées : '+F(af)+'/mois':'';
 }
 function rS(fs){
   if(fs)S.sal=+document.getElementById('sR').value;
@@ -214,110 +194,91 @@ function cotise(e,af,sit,enf,permit){
 function calc(){
   const{permit,sit,enf,enform,sal,t13,vari}=S;
   const af=enf>0?(enf-enform)*311+enform*386:0;
-  const eff=t13?sal*13/12:sal;
-  const m=cotise(eff,af,sit,enf,permit);
-  const m0=t13?cotise(sal,af,sit,enf,permit):null;
+  // Always compute both base and 13e for annual table
+  const mBase=cotise(sal,af,sit,enf,permit);
+  const m13=cotise(sal*13/12,af,sit,enf,permit);
+  const m=t13?m13:mBase; // monthly display
   let vd=null;
   if(vari>0){
-    const ae=eff*12,vAvs=vari*.053,vMat=vari*.00029;
-    const rAc=Math.max(0,148200-ae),vAc=Math.min(vari,rAc)*.011+Math.max(0,vari-rAc)*.005;
-    const vAanp=Math.min(vari,Math.max(0,(12350-eff)*12))*.0073,vIjm=vari*.00465;
+    // Prime always computed on base 12-month salary
+    const ae=sal*12;
+    const vAvs=vari*.053,vMat=vari*.00029;
+    const rAc=Math.max(0,148200-ae);
+    const vAc=Math.min(vari,rAc)*.011+Math.max(0,vari-rAc)*.005;
+    const vAanp=Math.min(vari,Math.max(0,(12350-sal)*12))*.0073,vIjm=vari*.00465;
     const vCot=vAvs+vMat+vAc+vAanp+vIjm;
     let vIs=0;
-    if(permit!=='C'){const rW=iasR(eff+af+vari/12,sit,enf);vIs=Math.max(0,(eff+af+vari/12)*rW*12-(eff+af)*m.iR*12);}
+    if(permit!=='C'){const rW=iasR(sal+af+vari/12,sit,enf);vIs=Math.max(0,(sal+af+vari/12)*rW*12-(sal+af)*mBase.iR*12);}
     vd={vari,vAvs,vMat,vAc,vAanp,vIjm,vCot,vIs,vNet:vari-vCot-vIs};
   }
-  draw(permit,sit,enf,enform,sal,eff,af,m,m0,t13,vd);
+  draw(permit,sit,enf,enform,sal,t13,af,m,mBase,m13,vd);
 }
 
-function row(n,v,cls,extra){
-  const vCls=(extra||'');
-  return`<div class="row${cls?' '+cls:''}"><span class="nm">${n}</span><span class="vl ${vCls}">${v}</span></div>`;
-}
-function fv(v,neg,pos){
-  const s=neg?'−\u202f':pos&&v>0?'+\u202f':'';
-  const cl=neg?'neg':pos?'pos':'';
-  return{s,cl};
+function row(n,v,cls,vc){
+  return`<div class="row${cls?' '+cls:''}"><span class="nm">${n}</span><span class="vl ${vc||''}">${v}</span></div>`;
 }
 
-function draw(permit,sit,enf,enform,sal,eff,af,m,m0,t13,vd){
-  const bAnn=t13?sal*13:sal*12;
-  const netAnn=m.net*12;
-  const n0Ann=m0?m0.net*12:netAnn;
-  const nc=1+(t13?1:0)+(vd?1:0);
+function draw(permit,sit,enf,enform,sal,t13,af,m,mBase,m13,vd){
+  const eff=t13?sal*13/12:sal;
 
-  // Top metrics
+  // Top metrics: always 3 cards (mensuel / annuel sans prime / annuel avec prime)
+  const hasPrime=vd!=null;
+  const nc=hasPrime?3:2;
   let top=`<div class="metrics" style="grid-template-columns:repeat(${nc},1fr);display:grid;gap:8px">`;
-  top+=`<div class="mc"><div style="font-size:11px;color:#666;margin-bottom:2px">Net mensuel versé</div><div class="val">${F(m.net)}</div><div class="sub">${PP(m.net/(eff+af))} du brut effectif</div></div>`;
-  if(t13)top+=`<div class="mc"><div style="font-size:11px;color:#666;margin-bottom:2px">Net annuel (avec 13<sup>e</sup>)</div><div class="val dark">${F(netAnn)}</div><div class="sub">Base ×12 hors 13<sup>e</sup> : ${F(n0Ann)}</div></div>`;
-  else top+=`<div class="mc"><div style="font-size:11px;color:#666;margin-bottom:2px">Net annuel</div><div class="val dark">${F(netAnn)}</div><div class="sub">Brut annuel : ${F(bAnn)}</div></div>`;
-  if(vd)top+=`<div class="mc"><div style="font-size:11px;color:#666;margin-bottom:2px">Net annuel + prime</div><div class="val">${F(netAnn+vd.vNet)}</div><div class="sub">Prime nette : ${F(vd.vNet)}</div></div>`;
+  top+=`<div class="mc"><div style="font-size:11px;color:#666;margin-bottom:2px">Net mensuel versé${t13?' (13<sup>e</sup> incl.)':''}</div><div class="val">${F(m.net)}</div><div class="sub">${PP(m.net/(eff+af))} du brut effectif</div></div>`;
+  top+=`<div class="mc"><div style="font-size:11px;color:#666;margin-bottom:2px">Net annuel avec 13<sup>e</sup></div><div class="val dark">${F(m13.net*12)}</div><div class="sub">Base ×12 sans 13<sup>e</sup> : ${F(mBase.net*12)}</div></div>`;
+  if(hasPrime)top+=`<div class="mc"><div style="font-size:11px;color:#666;margin-bottom:2px">Net annuel + prime</div><div class="val">${F(m13.net*12+vd.vNet)}</div><div class="sub">Prime nette : ${F(vd.vNet)}</div></div>`;
   top+='</div>';
   document.getElementById('topMet').innerHTML=top;
 
-  // Bar
-  const segs=[[Math.max(0,(eff-m.cot-m.isM)/eff),'#1D9E75'],[m.cot/eff,'#534AB7'],...(m.isM>0?[[m.isM/eff,'#BA7517']]:[])];
+  // Bar (on base salary, no 13e)
+  const segs=[[Math.max(0,(sal-mBase.cot-mBase.isM)/sal),'#1D9E75'],[mBase.cot/sal,'#534AB7'],...(mBase.isM>0?[[mBase.isM/sal,'#BA7517']]:[])];
   document.getElementById('bar').innerHTML=segs.map(([fl,c])=>`<div style="flex:${fl};background:${c};min-width:${fl>.003?'2px':'0'}"></div>`).join('');
-  const legD=[{c:'#1D9E75',l:`Net (hors AF) ${F(eff-m.cot-m.isM)}`},{c:'#534AB7',l:`Cotis. ${F(m.cot)}`},...(m.isM>0?[{c:'#BA7517',l:`IS ${F(m.isM)}`}]:[]),...(af>0?[{c:'#0F6E56',l:`AF +${F(af)}`}]:[])];
+  const legD=[{c:'#1D9E75',l:`Net (hors AF) ${F(sal-mBase.cot-mBase.isM)}`},{c:'#534AB7',l:`Cotis. ${F(mBase.cot)}`},...(mBase.isM>0?[{c:'#BA7517',l:`IS ${F(mBase.isM)}`}]:[]),...(af>0?[{c:'#0F6E56',l:`AF +${F(af)}`}]:[])];
   document.getElementById('leg').innerHTML=legD.map(({c,l})=>`<div style="display:flex;align-items:center;gap:5px;font-size:11px;color:#666"><div style="width:9px;height:9px;background:${c};border-radius:2px;flex-shrink:0"></div>${l}</div>`).join('');
 
-  // Monthly detail
-  const lppL=m.sc===0?`LPP (sous seuil <22'680 CHF/an)`:`LPP caisse 4.15% — SC ${F(m.sc)}/mois`;
+  // Monthly detail rows
+  const lppL=m.sc===0?`LPP (sous seuil <22'680 CHF/an)`:`LPP caisse : 4.15% sur SC ${F(m.sc)}/mois`;
   const afLbl=enf>0?(enform>0?`AF : ${enf-enform}×CHF 311 + ${enform}×CHF 386`:`AF : ${enf}×CHF 311`):'';
   let mr='';
-  mr+=row('GS 1000 — Salaire mensuel de base',F(sal),'','');
-  if(t13){
-    mr+=row('+ 13<sup>e</sup> mois proraté (÷12)','+\u202f'+F(eff-sal),'','pos');
-    mr+=row('= Brut effectif mensuel',F(eff),'sub','');
-  }
-  mr+=row('AVS / AI / APG — 5.30%','−\u202f'+F(m.avs),'','neg');
-  mr+=row('Maternité GE — 0.029%','−\u202f'+F(m.mat),'','neg');
-  mr+=row('AC — 1.10%'+(eff>12350?' (cap 12\'350/m)':''),'−\u202f'+F(m.ac),'','neg');
-  mr+=row('AANP code B1 — 0.73%'+(eff>12350?' (cap)':''),'−\u202f'+F(m.aanp),'','neg');
-  mr+=row('IJM code A1 — 0.465%','−\u202f'+F(m.ijm),'','neg');
+  mr+=row('GS 1000 : Salaire mensuel de base',F(sal),'','');
+  if(t13){mr+=row('+ 13<sup>e</sup> mois : proraté ÷12','+\u202f'+F(eff-sal),'','pos');mr+=row('= Brut effectif mensuel',F(eff),'sub','');}
+  mr+=row('AVS / AI / APG : 5.30%','−\u202f'+F(m.avs),'','neg');
+  mr+=row('Maternité GE : 0.029%','−\u202f'+F(m.mat),'','neg');
+  mr+=row('AC : 1.10%'+(eff>12350?' (cap 12\'350/m)':''),'−\u202f'+F(m.ac),'','neg');
+  mr+=row('AANP code B1 : 0.73%'+(eff>12350?' (cap)':''),'−\u202f'+F(m.aanp),'','neg');
+  mr+=row('IJM code A1 : 0.465%','−\u202f'+F(m.ijm),'','neg');
   mr+=m.lpp>0?row(lppL,'−\u202f'+F(m.lpp),'','neg'):row(lppL,'0','','');
   mr+=row('= Sous-total cotisations sociales','−\u202f'+F(m.cot),'sub','neg');
-  if(permit==='C')mr+=row(`IS — taxation ordinaire (indicatif ${(m.iR*100).toFixed(1)}%)`,`— 0`,'','');
-  else mr+=row(`IS barème GE-${sit}0N — ${(m.iR*100).toFixed(2)}%`,'−\u202f'+F(m.isM),'','neg');
-  mr+=row('= Net mensuel (hors AF)',F(m.net-af),'sub','pos');
+  if(permit==='C')mr+=row(`IS : taxation ordinaire (indicatif ${(m.iR*100).toFixed(1)}%)`,'0','','');
+  else mr+=row(`IS barème GE-${sit}0N : ${(m.iR*100).toFixed(2)}%`,'−\u202f'+F(m.isM),'','neg');
   if(af>0){
+    mr+=row('= Net mensuel hors AF',F(m.net-af),'sub','pos');
     mr+=row(afLbl,'+\u202f'+F(af),'','pos');
     mr+=row('= Net mensuel versé',F(m.net),'sub big','pos');
   } else {
-    mr=mr.slice(0,mr.lastIndexOf('<div class="row sub"'));
     mr+=row('= Net mensuel versé',F(m.net),'sub big','pos');
   }
   document.getElementById('mRows').innerHTML=mr;
   document.getElementById('pN').textContent=PN[permit]||'';
-  document.getElementById('mNote').textContent=eff>7560?`LPP complémentaire (surobligatoire) non incluse sur la tranche >7'560/m — applicable selon plan de prévoyance Alpineo.`:'';
+  document.getElementById('mNote').textContent=eff>7560?`LPP complémentaire (surobligatoire) non incluse sur la tranche >7'560/m : applicable selon plan de prévoyance Alpineo.`:'';
 
-  // Annual table
-  const cols=['Base ×12'];
-  if(t13)cols.push('Avec 13<sup>e</sup>');
+  // Annual synthesis : always Base ×12 | Avec 13e | +Prime
+  const cols=['Base ×12','Avec 13<sup>e</sup>'];
   if(vd)cols.push('+\u202fPrime');
-  const vBrut=[sal*12,...(t13?[sal*13]:[]),...(vd?[(t13?sal*13:sal*12)+vd.vari]:[])];
-  const cot0=m0?m0.cot*12:m.cot*12;
-  const is0=(m0?m0.isM:m.isM)*12;
-  const net0=m0?m0.net*12:m.net*12;
-  const vCots=[cot0,...(t13?[m.cot*12]:[]),...(vd?[(t13?m.cot:m0?m0.cot:m.cot)*12+vd.vCot]:[])];
-  const vIss=[is0,...(t13?[m.isM*12]:[]),...(vd?[(t13?m.isM:m0?m0.isM:m.isM)*12+vd.vIs]:[])];
-  const vAfs=cols.map(()=>af*12);
-  const vNets=[net0,...(t13?[m.net*12]:[]),...(vd?[(t13?m.net:m0?m0.net:m.net)*12+vd.vNet]:[])];
-  const vPrs=[...cols.slice(0,-1).map(()=>null),...(vd?[vd.vNet]:[])];
-
-  let ah=`<table class="at"><thead><tr><th></th>${cols.map(c=>`<th>${c}</th>`).join('')}</tr></thead><tbody>`;
-  const arows=[
-    {n:'Brut annuel',vs:vBrut,fmt:v=>F(v)},
-    {n:'Cotisations sociales',vs:vCots,fmt:v=>'−\u202f'+F(v),tc:'neg'},
-    {n:'IS annuelle',vs:vIss,fmt:v=>'−\u202f'+F(v),tc:'neg'},
-    ...(af>0?[{n:'Allocations familiales',vs:vAfs,fmt:v=>'+\u202f'+F(v),tc:'pos'}]:[]),
-    ...(vd?[{n:'Prime nette',vs:vPrs,fmt:v=>v===null?'—':'+\u202f'+F(v),tc:'pos'}]:[]),
-    {n:'Net annuel',vs:vNets,fmt:v=>F(v),tc:'pos',sub:true},
+  const rows_data=[
+    {n:'Brut annuel',vs:[sal*12,sal*13,...(vd?[sal*13+vd.vari]:[])],tc:''},
+    {n:'Cotisations sociales',vs:[mBase.cot*12,m13.cot*12,...(vd?[m13.cot*12+vd.vCot]:[])],tc:'neg',sg:'−\u202f'},
+    {n:'IS annuelle',vs:[mBase.isM*12,m13.isM*12,...(vd?[m13.isM*12+vd.vIs]:[])],tc:'neg',sg:'−\u202f'},
+    ...(af>0?[{n:'Allocations familiales',vs:[af*12,af*12,...(vd?[af*12]:[])],tc:'pos',sg:'+\u202f'}]:[]),
+    ...(vd?[{n:'Prime nette',vs:[':',':',vd.vNet],tc:'pos',sg:'+\u202f'}]:[]),
+    {n:'Net annuel',vs:[mBase.net*12,m13.net*12,...(vd?[m13.net*12+vd.vNet]:[])],tc:'pos',sub:true},
   ];
-  arows.forEach(ar=>{
+  let ah=`<table class="at"><thead><tr><th></th>${cols.map(c=>`<th>${c}</th>`).join('')}</tr></thead><tbody>`;
+  rows_data.forEach(ar=>{
     ah+=`<tr${ar.sub?' class="sub"':''}>`;
     ah+=`<td>${ar.n}</td>`;
-    ar.vs.forEach(v=>ah+=`<td class="${ar.tc||''}">${ar.fmt(v)}</td>`);
+    ar.vs.forEach(v=>ah+=`<td class="${ar.tc||''}">${typeof v==='string'?v:`${ar.sg||''}${F(v)}`}</td>`);
     ah+='</tr>';
   });
   ah+='</tbody></table>';
@@ -329,11 +290,11 @@ function draw(permit,sit,enf,enform,sal,eff,af,m,m0,t13,vd){
     vc.style.display='block';
     let vr='';
     vr+=row('Prime brute annuelle',F(vd.vari),'','');
-    vr+=row('AVS / AI / APG — 5.30%','−\u202f'+F(vd.vAvs),'','neg');
-    vr+=row('Maternité GE — 0.029%','−\u202f'+F(vd.vMat),'','neg');
+    vr+=row('AVS / AI / APG : 5.30%','−\u202f'+F(vd.vAvs),'','neg');
+    vr+=row('Maternité GE : 0.029%','−\u202f'+F(vd.vMat),'','neg');
     vr+=row('AC','−\u202f'+F(vd.vAc),'','neg');
-    vr+=row('AANP B1 — 0.73%','−\u202f'+F(vd.vAanp),'','neg');
-    vr+=row('IJM A1 — 0.465%','−\u202f'+F(vd.vIjm),'','neg');
+    vr+=row('AANP B1 : 0.73%','−\u202f'+F(vd.vAanp),'','neg');
+    vr+=row('IJM A1 : 0.465%','−\u202f'+F(vd.vIjm),'','neg');
     if(vd.vIs>0)vr+=row('IS marginal annuel','−\u202f'+F(vd.vIs),'','neg');
     vr+=row('= Prime nette annuelle',F(vd.vNet),'sub big','pos');
     document.getElementById('vRows').innerHTML=vr;
